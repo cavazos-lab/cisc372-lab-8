@@ -6,23 +6,7 @@
 
 __global__ void globalMax(int *a, int N, int* gl_max)
 {
-    /* insert code to calculate the index properly using blockIdx.x, blockDim.x, threadIdx.x */
-    int index = blockIdx.x * blockDim.x + threadIdx.x;
-    if (index < N) 
-    {
-      int val = a[index];
-      __shared__ int subMax;
-      
-      if (threadIdx.x == 0)
-          subMax = 0;
-      __syncthreads();     
-
-      atomicMax(&subMax, val);
-      __syncthreads();
-     
-      if (threadIdx.x == 0)  
-        atomicMax(gl_max, subMax);
-    }
+    /* TODO insert code to calculate the index properly using blockIdx.x, blockDim.x, threadIdx.x */
 }
 
 #define THREADS_PER_BLOCK 512

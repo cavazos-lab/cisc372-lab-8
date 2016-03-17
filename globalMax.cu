@@ -6,13 +6,7 @@
 
 __global__ void globalMax(int *a, int N, int* gl_max)
 {
-    /* insert code to calculate the index properly using blockIdx.x, blockDim.x, threadIdx.x */
-    int index = blockIdx.x * blockDim.x + threadIdx.x;
-    if (index < N)
-    {
-        int val = a[index];
-        atomicMax(gl_max, val);
-    }
+    /* TODO insert code to calculate the index properly using blockIdx.x, blockDim.x, threadIdx.x */
 }
 
 #define THREADS_PER_BLOCK 512
@@ -34,7 +28,6 @@ int main(int argc, char*argv[])
 
     cudaMalloc( (void **) &d_a, size );
     cudaMalloc( (void **) &d_max, sizeof(int) );
-
 
     /* allocate space for host copies of a, cpu_max, and setup input values */
 
